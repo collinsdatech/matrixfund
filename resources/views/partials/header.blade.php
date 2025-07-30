@@ -4,14 +4,14 @@
 
 				<!-- Logo -->
 				<div class="header-left active">
-					<a href="index.html" class="logo logo-normal">
-						<img src="assets/img/logo.svg" alt="Img">
+					<a href="#" class="logo logo-normal">
+						<img src="{{ setting('siteLogo') }}" alt="Img">
 					</a>
-					<a href="index.html" class="logo logo-white">
-						<img src="assets/img/logo-white.svg" alt="Img">
+					<a href="#" class="logo logo-white">
+						<img src="{{ setting('siteLogo') }}" alt="Img">
 					</a>
-					<a href="index.html" class="logo-small">
-						<img src="assets/img/logo-small.png" alt="Img">
+					<a href="#" class="logo-small">
+						<img src="{{ setting('siteLogo') }}" alt="Img">
 					</a>
 				</div>
 				<!-- /Logo -->
@@ -72,147 +72,9 @@
 					</li>
 					<!-- /Search -->
 
-					<!-- Select Store -->
-					<li class="nav-item dropdown has-arrow main-drop select-store-dropdown">
-						<a href="javascript:void(0);" class="dropdown-toggle nav-link select-store"
-							data-bs-toggle="dropdown">
-							<span class="user-info">
-								<span class="user-letter">
-									<img src="assets/img/store/store-01.png" alt="Store Logo" class="img-fluid">
-								</span>
-								<span class="user-detail">
-									<span class="user-name">Freshmart</span>
-								</span>
-							</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right">
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/store/store-01.png" alt="Store Logo" class="img-fluid">Freshmart
-							</a>
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/store/store-02.png" alt="Store Logo" class="img-fluid">Grocery Apex
-							</a>
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/store/store-03.png" alt="Store Logo" class="img-fluid">Grocery Bevy
-							</a>
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/store/store-04.png" alt="Store Logo" class="img-fluid">Grocery Eden
-							</a>
-						</div>
-					</li>
-					<!-- /Select Store -->
-
-					<li class="nav-item dropdown link-nav">
-						<a href="javascript:void(0);" class="btn btn-primary btn-md d-inline-flex align-items-center" data-bs-toggle="dropdown">
-							<i class="ti ti-circle-plus me-1"></i>Add New
-						</a>
-						<div class="dropdown-menu dropdown-xl dropdown-menu-center">
-							<div class="row g-2">
-								<div class="col-md-2">
-									<a href="category-list.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-brand-codepen"></i>
-										</span>
-										<p>Category</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="add-product.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-square-plus"></i>
-										</span>
-										<p>Product</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="category-list.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-shopping-bag"></i>
-										</span>
-										<p>Purchase</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="online-orders.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-shopping-cart"></i>
-										</span>
-										<p>Sale</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="expense-list.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-file-text"></i>
-										</span>
-										<p>Expense</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="quotation-list.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-device-floppy"></i>
-										</span>
-										<p>Quotation</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="sales-returns.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-copy"></i>
-										</span>
-										<p>Return</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="users.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-user"></i>
-										</span>
-										<p>User</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="customers.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-users"></i>
-										</span>
-										<p>Customer</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="sales-report.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-shield"></i>
-										</span>
-										<p>Biller</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="suppliers.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-user-check"></i>
-										</span>
-										<p>Supplier</p>
-									</a>
-								</div>
-								<div class="col-md-2">
-									<a href="stock-transfer.html" class="link-item">
-										<span class="link-icon">
-											<i class="ti ti-truck"></i>
-										</span>
-										<p>Transfer</p>
-									</a>
-								</div>
-							</div>
-						</div>
-					</li>
 					
-					<li class="nav-item pos-nav">
-						<a href="pos.html" class="btn btn-dark btn-md d-inline-flex align-items-center">
-							<i class="ti ti-device-laptop me-1"></i>POS
-						</a>
-					</li>
+
+					
 
 					<!-- Flag -->
 					<li class="nav-item dropdown has-arrow flag-nav nav-item-box">
@@ -231,17 +93,7 @@
 					</li>
 					<!-- /Flag -->
 
-					<li class="nav-item nav-item-box">
-						<a href="javascript:void(0);" id="btnFullscreen">
-							<i class="ti ti-maximize"></i>
-						</a>
-					</li>
-					<li class="nav-item nav-item-box">
-						<a href="email.html">
-							<i class="ti ti-mail"></i>
-							<span class="badge rounded-pill">1</span>
-						</a>
-					</li>
+				
 					<!-- Notifications -->
 					<li class="nav-item dropdown nav-item-box">
 						<a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">

@@ -708,7 +708,7 @@
 				<div class="main-menu">
 					<ul class="nav-menu">
 						<li class="submenu">
-							<a href="index.html"><i class="ti ti-layout-grid fs-16 me-2"></i><span> Main Menu</span> <span class="menu-arrow"></span></a>
+							<a href="index.html"><i class="ti ti-layout-grid fs-16 me-2"></i><span> Axtion Center</span> <span class="menu-arrow"></span></a>
 							<ul>
 								<li class="submenu">
 									<a href="javascript:void(0);" class="active subdrop"><span>Dashboard</span> <span class="menu-arrow"></span></a>
@@ -1390,8 +1390,8 @@
 						<div class="tab-content" id="v-pills-tabContent">
 							<div class="tab-pane fade show active" id="dashboard">
 								<ul>
-									<li class="menu-title"><span>MAIN</span></li>
-									<li><a href="index.html">Admin Dashboard</a></li>
+									<li class="menu-title"><span>Cpanel</span></li>
+									<li><a href="{{ route('user.dashboard') }}">Admin Dashboard</a></li>
 									<li><a href="admin-dashboard.html">Admin Dashboard 2</a></li>
 									<li><a href="sales-dashboard.html" class="active">Sales Dashboard</a></li>
 								</ul>

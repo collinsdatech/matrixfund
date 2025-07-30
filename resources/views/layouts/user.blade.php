@@ -59,9 +59,6 @@
     <link rel="stylesheet" href="{{ asset('user/assets/css/style.css') }}">
             @include('partials.toast')
 
-    <!-- JS Script -->
-    {{-- <script src="{{ asset('user/assets/js/theme-script.js') }}"></script> --}}
-
 </head>
 
 <body>

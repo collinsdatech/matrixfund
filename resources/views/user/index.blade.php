@@ -305,7 +305,8 @@
                                         @endif
                                     </div>
                                     <p class="mb-3">{{ $package->challenge_type }} Program</p>
-                                    <a href="{{ route('user.package.billing', $package->id) }}" class="btn btn-secondary w-100 mb-3">Subscribe Now</a>
+                                    <a href="{{ route('user.package.billing', $package->id) }}"
+                                        class="btn btn-secondary w-100 mb-3">Subscribe Now</a>
                                     <span class="d-block mb-1">Features</span>
                                     <p class="mb-2">Includes in this package:</p>
                                     <ul>
@@ -453,123 +454,4 @@
     </div>
     </div>
 
-
-    {{-- <!-- Main Content -->
-    <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Challenge Dashboard</h1>
-        </div>
-
-        <!-- Account Summary -->
-        <div class="row mb-4">
-            <div class="col-md-12">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-primary">
-                        <h5 class="mb-0">Account Summary</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p><strong>Challenge Title:</strong> <span id="challenge-title">Forex Pro Challenge</span>
-                                </p>
-                                <p><strong>Type:</strong> <span id="challenge-type">Phase 1</span></p>
-                                <p><strong>Leverage:</strong> <span id="leverage">1:30</span></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><strong>Payout:</strong> <span id="payout">$50,000</span></p>
-                                <p><strong>Account Type:</strong> <span id="account-type">Standard</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Balance and Trader Profile -->
-        <div class="row mb-4">
-            <!-- Balance -->
-            <div class="col-md-6">
-                <div class="card shadow-sm">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Current Balance</h5>
-                        <h2 class="text-success" id="current-balance">$10,000.00</h2>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trader Profile -->
-            <div class="col-md-6">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-info text-white">
-                        <h5 class="mb-0">Trader Profile</h5>
-                    </div>
-                    <div class="card-body">
-                        <p><strong>Login:</strong> <span id="trader-login">1234567</span></p>
-                        <p><strong>Password:</strong> ******** <button class="btn btn-sm btn-outline-secondary ms-2"
-                                id="show-password">Show</button></p>
-                        <p><strong>Server:</strong> <span id="trader-server">ForexPro-Server1</span></p>
-                        <button class="btn btn-primary mt-2" id="trade-now">Trade Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trading Objectives -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0">Trading Objectives</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <h6>Maximum Loss</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <small>$2,500 / $10,000 (25%)</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <h6>Daily Loss</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 10%"
-                                            aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <small>$500 / $5,000 (10%)</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <h6>Trading Days</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 30%"
-                                            aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <small>6 / 30 days (20%)</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <p><strong>Profit Target:</strong> <span id="profit-target">$10,000 (10%)</span></p>
-                                <p><strong>Minimum Trading Days:</strong> <span id="min-days">5 days</span></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><strong>Max Drawdown Allowed:</strong> <span id="max-drawdown">10%</span></p>
-                                <p><strong>Time Remaining:</strong> <span id="time-remaining">24 days</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div> --}}
 @endsection

@@ -1,35 +1,35 @@
-<!-- Load dependencies FIRST -->
-<!-- SweetAlert2 CSS (optional, for custom styling) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    @if (Session::has('success'))
+@if (Session::has('success'))
+    <script>
         Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: `{{ Session::get('success') }}`,
+            text: `{{ is_array(Session::get('success')) ? implode(', ', Session::get('success')) : Session::get('success') }}`,
             toast: true,
             showConfirmButton: false,
             timer: 4000,
             timerProgressBar: true
         });
-    @endif
+    </script>
+@endif
 
-    @if (Session::has('error'))
+@if (Session::has('error'))
+    <script>
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: `{{ Session::get('error') }}`,
+            text: `{{ is_array(Session::get('error')) ? implode(', ', Session::get('error')) : Session::get('error') }}`,
             toast: true,
             showConfirmButton: false,
             timer: 4000,
             timerProgressBar: true
         });
-    @endif
+    </script>
+@endif
 
-    @if ($errors->any())
+@if ($errors->any())
+    <script>
         const uniqueErrors = {};
         @foreach ($errors->all() as $error)
             uniqueErrors[`{{ $error }}`] = true;
@@ -48,7 +48,5 @@
                 });
             }, index * 300);
         });
-    @endif
-
-</script>
-
+    </script>
+@endif

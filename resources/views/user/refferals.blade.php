@@ -38,7 +38,7 @@
         <div class="col-md-6">
           <label class="form-label fw-bold">Your Referral Code</label>
           <div class="input-group">
-            <input type="text" class="form-control py-2" value="qooj219614" readonly>
+            <input type="text" class="form-control py-2" value="{{ $user->internetId }}" readonly>
             <button class="btn btn-outline-primary copy-btn" title="Copy to clipboard">
               <i class="far fa-copy"></i>
             </button>
@@ -49,7 +49,7 @@
         <div class="col-md-6">
           <label class="form-label fw-bold">Your Referral Link</label>
           <div class="input-group">
-            <input type="text" class="form-control py-2" value="https://prop.matrixtradersfund.com/register/?code=qooj219614" readonly>
+            <input type="text" class="form-control py-2" value="{{ $referralLink }}" readonly>
             <button class="btn btn-outline-primary copy-btn" title="Copy to clipboard">
               <i class="far fa-copy"></i>
             </button>
@@ -76,14 +76,7 @@
         </div>
       </div>
 
-      <!-- Promotional Banner -->
-      <div class="mt-4 text-center">
-        <img src="https://via.placeholder.com/900x140/4361ee/ffffff?text=Get+10%25+Deposit+Bonus+For+Every+Referral"
-             class="img-fluid rounded-3"
-             alt="Referral Bonus Banner">
-        <p class="text-muted small mt-2">Customize your promotional materials in the marketing kit</p>
-      </div>
-    </div>
+
   </div>
 
   <!-- Stats Dashboard -->
@@ -97,11 +90,11 @@
             </div>
             <div>
               <h6 class="text-muted mb-1">Affiliates</h6>
-              <h3 class="mb-0">0</h3>
+              <h3 class="mb-0">{{ $referralCount }}</h3>
             </div>
           </div>
           <div class="progress mt-2" style="height: 4px;">
-            <div class="progress-bar" style="width: 0%"></div>
+            <div class="progress-bar" style="width: {{ min($referralCount, 100) }}%"></div>
           </div>
         </div>
       </div>
@@ -116,11 +109,11 @@
             </div>
             <div>
               <h6 class="text-muted mb-1">Total Earnings</h6>
-              <h3 class="mb-0">$0.00</h3>
+              <h3 class="mb-0">${{ number_format($referralEarnings, 2) }}</h3>
             </div>
           </div>
           <div class="progress mt-2" style="height: 4px;">
-            <div class="progress-bar bg-success" style="width: 0%"></div>
+            <div class="progress-bar bg-success" style="width: {{ min($referralEarnings/50*100, 100) }}%"></div>
           </div>
         </div>
       </div>
@@ -135,11 +128,11 @@
             </div>
             <div>
               <h6 class="text-muted mb-1">Unique Depositors</h6>
-              <h3 class="mb-0">0</h3>
+              <h3 class="mb-0">{{ $referrals->where('deposit_amount', '>', 0)->count() }}</h3>
             </div>
           </div>
           <div class="progress mt-2" style="height: 4px;">
-            <div class="progress-bar bg-warning" style="width: 0%"></div>
+            <div class="progress-bar bg-warning" style="width: {{ min($referrals->where('deposit_amount', '>', 0)->count()/max($referralCount,1)*100, 100) }}%"></div>
           </div>
         </div>
       </div>
@@ -151,12 +144,58 @@
           <div class="mb-2">
             <i class="fas fa-coins text-primary fs-2"></i>
           </div>
-          <button class="btn btn-primary px-3">
+          <button class="btn btn-primary px-3 {{ $referralEarnings < 50 ? 'disabled' : '' }}">
             Claim Earnings <i class="fas fa-arrow-right ms-2"></i>
           </button>
           <small class="text-muted mt-1">Minimum $50 to withdraw</small>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Referrals Table -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <h5 class="mb-3">
+        <i class="fas fa-users me-2"></i>Your Referrals ({{ $referralCount }})
+      </h5>
+
+      @if($referrals->count() > 0)
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Joined Date</th>
+              <th>Status</th>
+              <th>Earnings</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($referrals as $referral)
+            <tr>
+              <td>{{ $referral->name }}</td>
+              <td>{{ $referral->email }}</td>
+              <td>{{ $referral->created_at->format('M d, Y') }}</td>
+              <td>
+                <span class="badge bg-{{ $referral->deposit_amount > 0 ? 'success' : 'warning' }}">
+                  {{ $referral->deposit_amount > 0 ? 'Active' : 'Pending' }}
+                </span>
+              </td>
+              <td>${{ $referral->deposit_amount > 0 ? $referralBonus : '0.00' }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+      @else
+      <div class="text-center py-5">
+        <i class="fas fa-users-slash text-muted fs-1 mb-3"></i>
+        <h5>No Referrals Yet</h5>
+        <p class="text-muted">Share your referral link to start earning commissions</p>
+      </div>
+      @endif
     </div>
   </div>
 
@@ -180,6 +219,12 @@
         </div>
       </div>
 
+      @if($referrals->count() > 0)
+      <div class="chart-container bg-light rounded-3 p-4">
+        <!-- You would implement a real chart here with chart.js or similar -->
+        <canvas id="referralChart" height="300"></canvas>
+      </div>
+      @else
       <div class="chart-container bg-light rounded-3 p-4 text-center">
         <div class="py-5">
           <i class="fas fa-chart-line text-muted fs-1 mb-3"></i>
@@ -187,6 +232,7 @@
           <p class="text-muted">Your affiliate performance metrics will appear here</p>
         </div>
       </div>
+      @endif
 
       <div class="mt-3 d-flex justify-content-between">
         <small class="text-muted">
@@ -199,6 +245,60 @@
     </div>
   </div>
 </div>
+
+<script>
+// You would add JavaScript here to handle the copy buttons and chart initialization
+document.querySelectorAll('.copy-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    const input = this.parentElement.querySelector('input');
+    input.select();
+    document.execCommand('copy');
+
+    // Show tooltip or notification
+    const tooltip = new bootstrap.Tooltip(this, {
+      title: 'Copied!',
+      trigger: 'manual'
+    });
+    tooltip.show();
+
+    setTimeout(() => {
+      tooltip.hide();
+    }, 1000);
+  });
+});
+
+// Initialize chart if there are referrals
+@if($referrals->count() > 0)
+const ctx = document.getElementById('referralChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+
+    labels: {!! json_encode($referralDates) !!},    datasets: [{
+      label: 'Referrals',
+      data: {!! json_encode(range(1, $referrals->count())) !!},
+      borderColor: '#4361ee',
+      backgroundColor: 'rgba(67, 97, 238, 0.1)',
+      tension: 0.1,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+@endif
+</script>
 
 <style>
 

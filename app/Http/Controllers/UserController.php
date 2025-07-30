@@ -58,7 +58,8 @@ class UserController extends Controller
         return view('user.settings', compact('user'));
     }
 
-    public function support() {
+    public function support()
+    {
         // Handle logic for support action
         // This could be a contact form or support ticket system
         return view('user.support'); // Assuming there's a view for support
@@ -71,19 +72,32 @@ class UserController extends Controller
         return view('user.demo'); // Assuming there's a view for demo
     }
 
-    public function refferals() {
+    public function refferals()
+    {
         $user = Auth::user();
 
         // Fetch referrals for the user
         $referrals = User::where('refer_by_id', $user->id)->get();
+        $referralBonus = setting('referralBonus', 10);
 
-        dd($referrals);
-        // 1 referral = setting('referral_bonus') = 10 USD
-        // Calculate total earnings from referrals
-        $referralBonus = setting('referral_bonus', 10); // Default to 10 if not set
-        $user->referralEarnings = $referrals->count() * $referralBonus;
-        $user->referralCount = $referrals->count();
+        $referralEarnings = $referrals->count() * $referralBonus;
+        $referralCount = $referrals->count();
+        $referralLink = route('register', ['ref' => $user->internetId]);
 
-        return view('user.refferals', compact('user'));
+        $referralDates = $referrals->pluck('created_at')->map(function($date) {
+    return $date->format('M d');
+})->reverse()->values();
+
+
+
+        return view('user.refferals', compact(
+            'user',
+            'referrals',
+            'referralEarnings',
+            'referralCount',
+            'referralLink',
+            'referralDates'  // Add this
+
+        ));
     }
 }

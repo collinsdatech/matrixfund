@@ -15,11 +15,6 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-sm-6 text-end">
-                    <span class="badge bg-light text-dark">
-                        <i class="fas fa-user-shield me-2"></i>Verified User
-                    </span>
-                </div>
             </div>
         </div>
 
@@ -118,7 +113,7 @@
                                 </form>
 
                                 <hr class="my-4">
-                                
+
                                 <h5 class="mb-4"><i class="fas fa-share-alt me-2"></i>Connected Accounts</h5>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item d-flex justify-content-between align-items-center">
@@ -182,9 +177,9 @@
                                         <i class="fas fa-sync-alt me-2"></i>Update Password
                                     </button>
                                 </form>
-                                
+
                                 <hr class="my-4">
-                                
+
                                 <h5 class="mb-3"><i class="fas fa-history me-2"></i>Recent Activity</h5>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -210,7 +205,7 @@
                                     <i class="fas fa-info-circle me-2"></i>
                                     Verified accounts enjoy higher limits and additional features.
                                 </div>
-                                
+
                                 <div class="verification-steps">
                                     <div class="step completed">
                                         <div class="step-icon">
@@ -266,13 +261,13 @@
             <div class="col-xl-4 col-lg-4">
                 <div class="card shadow-sm border-0">
                     <div class="card-body text-center py-4">
-                        <div class="avatar bg-primary bg-gradient text-white rounded-circle mx-auto mb-3" 
+                        <div class="avatar bg-primary bg-gradient text-white rounded-circle mx-auto mb-3"
                              style="width:100px; height:100px; line-height:100px; font-size:2.5rem;">
                             CO
                         </div>
                         <h4>Collins Obaseki</h4>
                         <p class="text-muted mb-4">@collinsobaseki0</p>
-                        
+
                         <div class="d-flex justify-content-center gap-2 mb-4">
                             <button class="btn btn-success btn-sm px-3">
                                 <i class="fas fa-plus me-1"></i> Deposit
@@ -281,7 +276,7 @@
                                 <i class="fas fa-minus me-1"></i> Withdraw
                             </button>
                         </div>
-                        
+
                         <div class="list-group list-group-flush text-start">
                             <div class="list-group-item">
                                 <div class="d-flex justify-content-between">
@@ -308,9 +303,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <hr class="my-4">
-                        
+
                         <h6 class="text-start mb-3"><i class="fas fa-chart-line me-2"></i>Account Status</h6>
                         <div class="progress mb-2" style="height: 8px;">
                             <div class="progress-bar bg-success" style="width: 25%"></div>
@@ -318,7 +313,7 @@
                         <p class="text-start text-muted small">Complete verification to unlock full account features.</p>
                     </div>
                 </div>
-                
+
                 <!-- Security Card -->
                 <div class="card shadow-sm border-0 mt-4">
                     <div class="card-body">
@@ -358,7 +353,7 @@
     .nav-tabs-custom {
         border-bottom: 1px solid rgba(0,0,0,0.05);
     }
-    
+
     .nav-tabs-custom .nav-link {
         border: none;
         color: #6c757d;
@@ -367,23 +362,23 @@
         border-radius: 0;
         position: relative;
     }
-    
+
     .nav-tabs-custom .nav-link.active {
         color: #4361ee;
         background: transparent;
         border-bottom: 3px solid #4361ee;
     }
-    
+
     .nav-tabs-custom .nav-link:hover {
         color: #4361ee;
     }
-    
+
     .verification-steps .step {
         display: flex;
         padding: 15px 0;
         position: relative;
     }
-    
+
     .verification-steps .step:not(:last-child):after {
         content: '';
         position: absolute;
@@ -393,11 +388,11 @@
         width: 2px;
         background: #e9ecef;
     }
-    
+
     .verification-steps .step.completed:not(:last-child):after {
         background: #00c853;
     }
-    
+
     .verification-steps .step-icon {
         width: 42px;
         height: 42px;
@@ -409,23 +404,23 @@
         margin-right: 15px;
         z-index: 1;
     }
-    
+
     .verification-steps .step.completed .step-icon {
         background: #00c853;
         color: white;
     }
-    
+
     .verification-steps .step-content {
         flex: 1;
     }
-    
+
     .avatar {
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
     }
-    
+
     .bg-gradient {
         background: linear-gradient(135deg, rgba(67,97,238,0.1) 0%, rgba(67,97,238,0.05) 100%);
     }

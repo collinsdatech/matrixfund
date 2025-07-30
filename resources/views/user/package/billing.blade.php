@@ -1,7 +1,132 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="container mt-4">
+<style>
+ .billing-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+    .card-option {
+      border: 2px solid #e0e6ed;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-option.active {
+      background-color: #eefaf2;
+      border-color: #16a34a;
+    }
+    .section-label {
+      font-weight: 600;
+      margin: 30px 0 15px;
+    }
+    .selection-group button {
+      margin: 5px 10px 5px 0;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+    .selection-group .btn.active {
+      background-color: #16a34a;
+      color: white;
+      border-color: #16a34a;
+    }
+    .price-display {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      color: #0e3d25;
+    }
+    .btn-enroll {
+      border: 2px solid #0e3d25;
+      color: #0e3d25;
+      padding: 10px 40px;
+      border-radius: 30px;
+      background-color: white;
+      transition: 0.3s;
+      display: block;
+      margin: 20px auto 0;
+    }
+    .btn-enroll:hover {
+      background-color: #0e3d25;
+      color: white;
+    }
+    .mt5-logo {
+      height: 22px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="billing-container">
+  <h4>Plans & Pricing</h4>
+
+  <!-- Select a challenge -->
+  <div class="section-label">Select a challenge</div>
+  <div class="card-option">
+    <span>One time fee $100</span>
+    <strong>$5,000.00</strong>
+  </div>
+  <div class="card-option active">
+    <span>One time fee $250</span>
+    <strong>$10,000.00</strong>
+  </div>
+  <div class="card-option">
+    <span>One time fee $350</span>
+    <strong>$25,000.00</strong>
+  </div>
+  <div class="card-option">
+    <span>One time fee $500</span>
+    <strong>$50,000.00</strong>
+  </div>
+
+  <div class="price-display">$250.00</div>
+  <button class="btn btn-enroll">Enroll Now</button>
+
+  <!-- Plan Type -->
+  <div class="section-label">Select Plan Type</div>
+  <div class="selection-group">
+    <button class="btn btn-outline-secondary">Synthetic Indices Practice</button>
+    <button class="btn btn-success active">Synthetic Indices</button>
+    <button class="btn btn-outline-secondary">Forex Program</button>
+    <button class="btn btn-outline-secondary">Forex Instant Funding</button>
+    <button class="btn btn-outline-secondary">Synthetic Indices Instant Funding</button>
+  </div>
+
+  <!-- Tradable Assets -->
+  <div class="section-label">Tradable Assets</div>
+  <div class="selection-group">
+    <button class="btn btn-success active">FX</button>
+    <button class="btn btn-outline-secondary">Crypto</button>
+    <button class="btn btn-outline-secondary">Equity</button>
+    <button class="btn btn-outline-secondary">Crypto Futures</button>
+  </div>
+
+  <!-- Platform -->
+  <div class="section-label">Select Your Platform</div>
+  <div class="selection-group">
+    <button class="btn btn-success active">
+      <img src="https://seeklogo.com/images/M/metatrader-5-logo-B1C6A0F62D-seeklogo.com.png" class="mt5-logo" alt="MT5"> MetaTrader 5
+    </button>
+  </div>
+
+  <!-- Preferences -->
+  <div class="section-label">Select Your Preference</div>
+  <div class="selection-group">
+    <button class="btn btn-success active">Swap</button>
+    <button class="btn btn-outline-secondary">Swap Free (Price +$20.00)</button>
+  </div>
+</div>
+
+    <div class=" mt-4">
         <div class="row">
             <!-- Plans & Pricing -->
             <div class="col-md-7">
