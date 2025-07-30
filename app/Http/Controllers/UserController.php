@@ -74,6 +74,15 @@ class UserController extends Controller
     public function refferals() {
         $user = Auth::user();
 
+        // Fetch referrals for the user
+        $referrals = User::where('refer_by_id', $user->id)->get();
+
+        dd($referrals);
+        // 1 referral = setting('referral_bonus') = 10 USD
+        // Calculate total earnings from referrals
+        $referralBonus = setting('referral_bonus', 10); // Default to 10 if not set
+        $user->referralEarnings = $referrals->count() * $referralBonus;
+        $user->referralCount = $referrals->count();
 
         return view('user.refferals', compact('user'));
     }

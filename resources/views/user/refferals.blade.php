@@ -44,7 +44,7 @@
             </button>
           </div>
         </div>
-        
+
         <!-- Referral Link -->
         <div class="col-md-6">
           <label class="form-label fw-bold">Your Referral Link</label>
@@ -78,8 +78,8 @@
 
       <!-- Promotional Banner -->
       <div class="mt-4 text-center">
-        <img src="https://via.placeholder.com/900x140/4361ee/ffffff?text=Get+10%25+Deposit+Bonus+For+Every+Referral" 
-             class="img-fluid rounded-3" 
+        <img src="https://via.placeholder.com/900x140/4361ee/ffffff?text=Get+10%25+Deposit+Bonus+For+Every+Referral"
+             class="img-fluid rounded-3"
              alt="Referral Bonus Banner">
         <p class="text-muted small mt-2">Customize your promotional materials in the marketing kit</p>
       </div>
@@ -106,7 +106,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-3">
       <div class="card stat-card h-100">
         <div class="card-body">
@@ -125,7 +125,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-3">
       <div class="card stat-card h-100">
         <div class="card-body">
@@ -144,7 +144,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-3">
       <div class="card stat-card h-100">
         <div class="card-body text-center d-flex flex-column justify-content-center">
@@ -179,7 +179,7 @@
           </ul>
         </div>
       </div>
-      
+
       <div class="chart-container bg-light rounded-3 p-4 text-center">
         <div class="py-5">
           <i class="fas fa-chart-line text-muted fs-1 mb-3"></i>
@@ -187,7 +187,7 @@
           <p class="text-muted">Your affiliate performance metrics will appear here</p>
         </div>
       </div>
-      
+
       <div class="mt-3 d-flex justify-content-between">
         <small class="text-muted">
           <i class="fas fa-info-circle me-1"></i> Data updates every 24 hours
@@ -201,59 +201,55 @@
 </div>
 
 <style>
-  /* Custom Styles */
-  .main-content {
-    padding: 20px;
-    background-color: #f8f9fa;
-  }
-  
+
+
   .card {
     border: none;
     border-radius: 12px;
     transition: transform 0.2s;
   }
-  
+
   .card:hover {
     transform: translateY(-2px);
   }
-  
+
   .stat-card {
     background-color: white;
     box-shadow: 0 4px 6px rgba(0,0,0,0.03);
   }
-  
+
   .stat-card h3 {
     font-weight: 700;
   }
-  
+
   .copy-btn {
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .chart-container {
     min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .btn-tabs .btn {
     border-radius: 8px;
     min-width: 100px;
   }
-  
+
   .btn-tabs .btn.active {
     box-shadow: 0 2px 8px rgba(67,97,238,0.2);
   }
-  
+
   .form-control {
     border-radius: 8px;
     padding: 10px 15px;
   }
-  
+
   .input-group-text {
     border-radius: 8px 0 0 8px;
   }
@@ -266,14 +262,14 @@
       const input = this.parentElement.querySelector('input');
       input.select();
       document.execCommand('copy');
-      
+
       // Show tooltip feedback
       const tooltip = new bootstrap.Tooltip(this, {
         title: 'Copied!',
         trigger: 'manual'
       });
       tooltip.show();
-      
+
       setTimeout(() => {
         tooltip.hide();
       }, 1000);
