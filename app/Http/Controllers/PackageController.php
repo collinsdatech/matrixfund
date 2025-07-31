@@ -16,32 +16,16 @@ class PackageController extends Controller
 {
     //
 
-    public function package($id)
+    public function package()
     {
         $user = Auth::user();
 
-        $package = Package::findOrFail($id);
 
 
 
-        $platforms = TradingPlatform::all();
 
-        $tradeables = TradableAsset::all();
-
-        $details = [
-            ['icon' => 'fas fa-user', 'label' => 'Name', 'value' => $package->name],
-            ['icon' => 'fas fa-wallet', 'label' => 'Account Size', 'value' => '$' . number_format($package->account_size_min) . ' - $' . number_format($package->account_size_max)],
-            ['icon' => 'fas fa-trophy', 'label' => 'Profit Target', 'value' => $package->profit_target . '%'],
-            ['icon' => 'fas fa-clock', 'label' => 'Time Limit', 'value' => $package->time_limit . ' days'],
-            ['icon' => 'fas fa-arrow-down', 'label' => 'Max Drawdown', 'value' => $package->max_drawdown . '%'],
-            ['icon' => 'fas fa-chart-line', 'label' => 'Daily Loss Limit', 'value' => $package->daily_loss_limit . '%'],
-            ['icon' => 'fas fa-percent', 'label' => 'Commission Rate', 'value' => $package->commission_rate . '%'],
-            ['icon' => 'fas fa-balance-scale', 'label' => 'Leverage', 'value' => $package->leverage . 'x'],
-            ['icon' => 'fas fa-hand-holding-usd', 'label' => 'Profit Share', 'value' => $package->profit_share . '%'],
-            ['icon' => 'fas fa-calendar-alt', 'label' => 'Payout Frequency', 'value' => $package->payout_frequency],
-        ];
-
-        return view('user.package.billing', compact('package', 'tradeables', 'platforms', 'details'));
+        // return view('user.package.billing', compact('package', 'tradeables', 'platforms', 'details'));
+        return view('user.package.billing');
     }
 
     public function enroll(Request $request, $id)
@@ -78,8 +62,71 @@ class PackageController extends Controller
             'trade_type' => $request->trade_type,
             'platform' => $request->platform,
         ]);
-
     }
+
+    public function getPackageTimeFees($packageId)
+    {
+        $package = Package::select(['id', 'name', 'time_fee'])
+            ->where('id', $packageId)
+            ->firstOrFail();
+
+        $timeFee = json_decode($package->time_fee, true);
+
+        // Format the fee data
+        $formattedFees = array_map(function ($tier) {
+
+            return [
+                'label' => $tier['label'],
+                'fee' => number_format($tier['fee'], 2),
+                'original_price' => number_format($tier['original_price'], 2)
+            ];
+        }, $timeFee['tiers']);
+
+        return response()->json([
+            'success' => true,
+            'package' => [
+                'id' => $package->id,
+                'name' => $package->name,
+                'formatted_fees' => $formattedFees
+            ]
+        ]);
+    }
+
+    public function getPackagesWithFees()
+    {
+        $packages = Package::where('is_active', 1)
+            ->select(['id', 'name', 'time_fee'])
+            ->get()
+            ->map(function ($package) {
+                // Transform the time_fee JSON into a more usable format
+                $timeFee = json_decode($package->time_fee, true);
+                $package->formatted_fees = $this->formatFeeData($timeFee['tiers']);
+                return $package;
+            });
+
+        return response()->json([
+            'success' => true,
+            'packages' => $packages
+        ]);
+    }
+
+    /**
+     * Format fee data for frontend display
+     */
+    private function formatFeeData(array $tiers): array
+    {
+        return array_map(function ($tier) {
+            return [
+                'label' => $tier['label'],
+                'fee' => number_format($tier['fee'], 2),
+                'original_price' => number_format($tier['original_price'], 2),
+            ];
+        }, $tiers);
+    }
+
+
+
+
 
     public function gateway()
     {

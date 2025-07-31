@@ -44,6 +44,28 @@ Route::post('/email/verification-notification', function (Request $request) {
     return redirect()->back()->with('success', 'Verification link resent successfully!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+// Route and prefix for api
+
+Route::middleware(['auth'])->prefix('api')->group(function () {
+// Packages Routes
+Route::get('/packages', function() {
+    return response()->json(\App\Models\Package::where('is_active', 1)->get());
+});
+
+// Trading Platforms Routes
+Route::get('/trading-platforms', function() {
+    return response()->json(\App\Models\TradingPlatform::where('is_active', 1)->get());
+});
+
+// Tradeable Assets Routes
+Route::get('/tradeable-assets', function() {
+    return response()->json(\App\Models\TradableAsset::where('is_active', 1)->get());
+});
+
+Route::get('/packages/time-fees', [PackageController::class, 'getPackagesWithFees']);
+Route::get('/packages/{package}/time-fees', [PackageController::class, 'getPackageTimeFees']);
+});
+
 
 Route::middleware(['auth', 'verified', 'token_check'])->prefix('user')->group(function () {
 
@@ -65,7 +87,7 @@ Route::middleware(['auth', 'verified', 'token_check'])->prefix('user')->group(fu
 
 
     // Route to enroll in a package
-    Route::post('/package/enroll/{id}', [PackageController::class, 'enroll'])->name('user.package.enroll');
+    Route::post('/package/enroll/', [PackageController::class, 'enroll'])->name('user.package.enroll');
     Route::get('/payment/gateway', [PackageController::class, 'gateway'])->name('user.payment.gateway');
 
 

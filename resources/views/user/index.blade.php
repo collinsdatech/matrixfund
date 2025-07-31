@@ -306,7 +306,7 @@
                                         @endif
                                     </div>
                                     <p class="mb-3 px-2">{{ $package->challenge_type }} Program</p>
-                                    <a href="{{ route('user.package.billing', $package->id) }}" class="btn btn-secondary w-100 rounded-4">Subscribe Now</a>
+                                    <a href="{{ route('user.package.billing') }}" class="btn btn-secondary w-100 rounded-4">Subscribe Now</a>
                                     </div>
                                     <span class="d-block mb-1">Features</span>
                                     <p class="mb-2">Includes in this package:</p>
