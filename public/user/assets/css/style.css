@@ -20,6 +20,15 @@ body {
   overflow-x: hidden;
 }
 
+
+.lightgray {
+  background: #f9f9f9;
+}
+
+.lightgray2 {
+  background: rgb(243, 243, 243);
+}
+
 ::selection {
   background: #1a991e;
   color: #ffffff;
@@ -8601,7 +8610,7 @@ table .edit-delete-action.data {
   padding: 1.25rem;
 }
 .card .card-title {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: capitalize;
   color: #212B36;
@@ -17196,8 +17205,8 @@ body.layout-mode-rtl .item-list p::before {
   top: 20px;
 }
 .notifications .notification-list li .avatar {
-  width: 48px;
-  height: 48px;
+  width: 80px;
+  height: 80px;
   margin: 0 8px 0 0;
   border-radius: 50%;
 }
@@ -45968,3 +45977,4 @@ span.flatpickr-weekday {
 }
 
 /*# sourceMappingURL=style.css.map */
+
