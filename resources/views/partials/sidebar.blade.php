@@ -77,82 +77,20 @@
 						<li class="submenu-open">
 							<h6 class="submenu-hdr">Main</h6>
 							<ul>
-								<li class="submenu">
-									<a href="javascript:void(0);" class="active subdrop"><i class="ti ti-layout-grid fs-16 me-2"></i><span>Dashboard</span><span class="menu-arrow"></span></a>
-									<ul>
-										<li><a href="index.html">Admin Dashboard</a></li>
-										<li><a href="admin-dashboard.html">Admin Dashboard 2</a></li>
-										<li><a href="sales-dashboard.html" class="active">Sales Dashboard</a></li>
-									</ul>
-								</li>
-								<li class="submenu">
-									<a href="javascript:void(0);"><i class="ti ti-user-edit fs-16 me-2"></i><span>Super Admin</span><span class="menu-arrow"></span></a>
-									<ul>
-										<li><a href="dashboard.html">Dashboard</a></li>
-										<li><a href="companies.html">Companies</a></li>
-										<li><a href="subscription.html">Subscriptions</a></li>
-										<li><a href="packages.html">Packages</a></li>
-										<li><a href="domain.html">Domain</a></li>
-										<li><a href="purchase-transaction.html">Purchase Transaction</a></li>
-									</ul>
-								</li>
-								<li class="submenu">
-									<a href="javascript:void(0);"><i class="ti ti-brand-apple-arcade fs-16 me-2"></i><span>Application</span><span class="menu-arrow"></span></a>
-									<ul>
-										<li><a href="chat.html">Chat</a></li>
-										<li class="submenu submenu-two"><a href="javascript:void(0);">Call<span class="menu-arrow inside-submenu"></span></a>
-											<ul>
-												<li><a href="video-call.html">Video Call</a></li>
-												<li><a href="audio-call.html">Audio Call</a></li>
-												<li><a href="call-history.html">Call History</a></li>
-											</ul>
-										</li>
-										<li><a href="calendar.html">Calendar</a></li>
-										<li><a href="contacts.html">Contacts</a></li>
-										<li><a href="email.html">Email</a></li>
-										<li><a href="todo.html">To Do</a></li>
-										<li><a href="notes.html">Notes</a></li>
-										<li><a href="file-manager.html">File Manager</a></li>
-										<li><a href="projects.html">Projects</a></li>
-										<li class="submenu submenu-two"><a href="javascript:void(0);">Ecommerce<span class="menu-arrow inside-submenu"></span></a>
-											<ul>
-												<li><a href="products.html">Products</a></li>
-												<li><a href="orders.html">Orders</a></li>
-												<li><a href="customers.html">Customers</a></li>
-												<li><a href="cart.html">Cart</a></li>
-												<li><a href="checkout.html">Checkout</a></li>
-												<li><a href="wishlist.html">Wishlist</a></li>
-												<li><a href="reviews.html">Reviews</a></li>
-											</ul>
-										</li>
-										<li><a href="social-feed.html">Social Feed</a></li>
-										<li><a href="search-list.html">Search List</a></li>
-									</ul>
-								</li>
-								<li class="submenu">
-									<a href="javascript:void(0);"><i class="ti ti-layout-sidebar-right-collapse fs-16 me-2"></i><span>Layouts</span><span class="menu-arrow"></span></a>
-									<ul>
-										<li><a href="layout-horizontal.html">Horizontal</a></li>
-										<li><a href="layout-detached.html">Detached</a></li>
-										<li><a href="layout-two-column.html">Two Column</a></li>
-										<li><a href="layout-hovered.html">Hovered</a></li>
-										<li><a href="layout-boxed.html">Boxed</a></li>
-										<li><a href="layout-rtl.html">RTL</a></li>
-										<li><a href="layout-dark.html">Dark</a></li>
-									</ul>
-								</li>
+
+								<li><a href="{{ route('user.dashboard') }}"><i class="fs-16 me-2 ti ti-home"></i> Dashboard</a></li>
+
+
 							</ul>
 						</li>
 						<li class="submenu-open">
-							<h6 class="submenu-hdr">Inventory</h6>
+							<h6 class="submenu-hdr"></h6>
 							<ul>
-								<li><a href="product-list.html"><i data-feather="box"></i><span>Products</span></a></li>
-								<li><a href="add-product.html"><i class="ti ti-table-plus fs-16 me-2"></i><span>Create Product</span></a></li>
-								<li><a href="expired-products.html"><i class="ti ti-progress-alert fs-16 me-2"></i><span>Expired Products</span></a></li>
-								<li><a href="low-stocks.html"><i class="ti ti-trending-up-2 fs-16 me-2"></i><span>Low Stocks</span></a></li>
-								<li><a href="category-list.html"><i class="ti ti-list-details fs-16 me-2"></i><span>Category</span></a></li>
-								<li><a href="sub-categories.html"><i class="ti ti-carousel-vertical fs-16 me-2"></i><span>Sub Category</span></a></li>
-								<li><a href="brand-list.html"><i class="ti ti-triangles fs-16 me-2"></i><span>Brands</span></a></li>
+
+								<li><a href="{{ route('user.accounts') }}"><i data-feather="box"></i><span>Trading Accounts</span></a></li>
+								<li><a href="{{ route('user.package.billing') }}"><i class="ti ti-report-money fs-16 me-2"></i><span>Billing</span></a></li>
+								<li><a href="{{ route('user.payout') }}"><i class="ti ti-carousel-vertical fs-16 me-2"></i><span>Payout</span></a></li>
+								<li><a href="{{ route('user.tournament') }}"><i class="ti ti-trophy fs-16 me-2"></i><span>Tournament</span></a></li>
 								<li><a href="units.html"><i class="ti ti-brand-unity fs-16 me-2"></i><span>Units</span></a></li>
 								<li><a href="varriant-attributes.html"><i class="ti ti-checklist fs-16 me-2"></i><span>Variant Attributes</span></a></li>
 								<li><a href="warranty.html"><i class="ti ti-certificate fs-16 me-2"></i><span>Warranties</span></a></li>
@@ -1094,7 +1032,7 @@
 										</li>
 										<li><a href="testimonials.html"><span>Testimonials</span></a></li>
 										<li><a href="faq.html"><span>FAQ</span></a></li>
-		
+
 									</ul>
 								</li>
 								<li class="submenu">
@@ -1540,7 +1478,7 @@
 									<li><a href="billers.html"><span>Billers</span></a></li>
 									<li><a href="suppliers.html"><span>Suppliers</span></a></li>
 									<li><a href="store-list.html"><span>Stores</span></a></li>
-									<li><a href="warehouse.html"><span>Warehouses</span></a></li>							
+									<li><a href="warehouse.html"><span>Warehouses</span></a></li>
 								</ul>
 							</div>
 							<div class="tab-pane fade" id="hrm">

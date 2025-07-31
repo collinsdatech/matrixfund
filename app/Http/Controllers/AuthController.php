@@ -54,9 +54,6 @@ class AuthController extends Controller
             }
 
 
-
-
-
             if (!$user || !Hash::check($request->password, $user->password)) {
 
                 Log::info('Login attempt failed', [
@@ -301,7 +298,7 @@ class AuthController extends Controller
 
     public function showRegistrationForm()
     {
-        // Return the registration view
+
         $countries = [
             'Afghanistan',
             'Albania',

@@ -6,7 +6,6 @@
             icon: 'success',
             title: 'Success',
             text: `{{ is_array(Session::get('success')) ? implode(', ', Session::get('success')) : Session::get('success') }}`,
-            toast: true,
             showConfirmButton: false,
             timer: 4000,
             timerProgressBar: true
@@ -20,7 +19,6 @@
             icon: 'error',
             title: 'Error',
             text: `{{ is_array(Session::get('error')) ? implode(', ', Session::get('error')) : Session::get('error') }}`,
-            toast: true,
             showConfirmButton: false,
             timer: 4000,
             timerProgressBar: true
@@ -41,7 +39,6 @@
                     icon: 'error',
                     title: 'Validation Error',
                     text: error,
-                    toast: true,
                     showConfirmButton: false,
                     timer: 5000,
                     timerProgressBar: true

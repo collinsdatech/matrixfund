@@ -84,9 +84,9 @@ class UserController extends Controller
         $referralCount = $referrals->count();
         $referralLink = route('register', ['ref' => $user->internetId]);
 
-        $referralDates = $referrals->pluck('created_at')->map(function($date) {
-    return $date->format('M d');
-})->reverse()->values();
+        $referralDates = $referrals->pluck('created_at')->map(function ($date) {
+            return $date->format('M d');
+        })->reverse()->values();
 
 
 
@@ -99,5 +99,64 @@ class UserController extends Controller
             'referralDates'  // Add this
 
         ));
+    }
+
+    public function UpdatePersonalInfo(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'username' => 'required|string|max:50',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+        ]);
+
+
+        // Check if the email is already taken by another user
+        if (User::where('email', $request->email)->where('id', '!=', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'The email address is already taken by another user.');
+        }
+        // Check if the username is already taken by another user
+        if (User::where('username', $request->username)->where('id', '!=', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'The username is already taken by another user.');
+        }
+
+
+
+        try {
+            $user->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+            ]);
+
+            return redirect()->back()->with('success', 'Personal information updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to update personal information. Please try again.');
+        }
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'current_password' => 'required|string',
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+
+        ]);
+
+        // Check if the current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }
+
+        // Update the password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password changed successfully.');
     }
 }

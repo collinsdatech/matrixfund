@@ -33,7 +33,6 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('user/assets/css/style.css') }}">
 
-        @include('partials.toast')
 
 
 
@@ -47,9 +46,14 @@
 
     @yield('content')
 
-    <!-- jQuery -->
-    <script src="{{ asset('user/assets/js/jquery-3.7.1.min.js') }}"
-        type="1be5fa836e491b332016107f-text/javascript"></script>
+
+        <script src="{{ asset('user/assets/js/jquery-3.7.1.min.js') }}"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        @include('partials.toast')
+
 
     <!-- Feather Icon JS -->
     <script src="{{ asset('user/assets/js/feather.min.js') }}" type="1be5fa836e491b332016107f-text/javascript"></script>

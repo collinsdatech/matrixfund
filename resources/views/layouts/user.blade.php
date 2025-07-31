@@ -57,7 +57,6 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('user/assets/css/style.css') }}">
-            @include('partials.toast')
 
 </head>
 
@@ -80,3 +79,4 @@
             </div>
         </div>
         @include('partials.footer')
+

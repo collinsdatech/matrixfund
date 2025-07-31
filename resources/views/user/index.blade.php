@@ -116,7 +116,7 @@
     <div class="row">
 
         <div class="col-xxl-8 col-xl-8 col-sm-12 col-12 ">
-            <h3>Welcome to your Dashboard {{ $user->name }}</h3>
+            <h4 class="mb-3">Dashboard</h4>
             @if($userPackages->count() > 0)
 
                 <h5 class="fw-light mb-3 mt-2">Your package: {{ $packages->first()->name ?? 'N/A' }}</h5>
@@ -289,24 +289,25 @@
 
 
             @else
-                <h5 class="mt-2 mb-2">Available Packages</h5>
 
                 <div class="row">
                     @foreach($packages as $package)
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                            <div class="card bg-light mb-3">
+                            <div class="card shadow bg-light mb-3 rounded-4" style="border: 0px solid #33014b;">
                                 <div class="card-body">
-                                    <p class="mb-1">{{ $package->name }}</p>
-                                    <div class="d-flex align-items-center mb-2">
-                                        <h4>${{ number_format($package->account_size_min, 2) }}</h4>
+                                    <div class="lightgray2 mb-3 rounded-4 pt-3 text-center">
+                                        <img src="{{ asset('user/assets/img/medal/medal5.svg') }}" class="w-50" alt="">
+                                        <p class="mb-1 px-2 text-black">{{ $package->name }}</p>
+                                    <div class="d-flex justify-content-center text-center mb-2 px-2">
+                                        <h5>${{ number_format($package->account_size_min, 2) }}</h5>
                                         @if($package->account_size_max)
-                                            <span class="d-inline-flex ms-1"> -
+                                            <span class="d-inline-flex text-primary ms-1 fs-12"> -
                                                 ${{ number_format($package->account_size_max, 2) }}</span>
                                         @endif
                                     </div>
-                                    <p class="mb-3">{{ $package->challenge_type }} Program</p>
-                                    <a href="{{ route('user.package.billing', $package->id) }}"
-                                        class="btn btn-secondary w-100 mb-3">Subscribe Now</a>
+                                    <p class="mb-3 px-2">{{ $package->challenge_type }} Program</p>
+                                    <a href="{{ route('user.package.billing', $package->id) }}" class="btn btn-secondary w-100 rounded-4">Subscribe Now</a>
+                                    </div>
                                     <span class="d-block mb-1">Features</span>
                                     <p class="mb-2">Includes in this package:</p>
                                     <ul>
@@ -358,55 +359,61 @@
 
         <!-- User Information (col-4) -->
         <div class="col-xxl-4 col-xl-5">
-            <div class="card flex-fill">
+            <div class="card shadow bg-light flex-fill rounded-4" style="border: 0px solid">
                 <div class="card-header">
                     <div class="d-inline-flex align-items-center">
-                        <span class="title-icon bg-soft-info fs-16 me-2"><i class="ti ti-info-circle"></i></span>
                         <h5 class="card-title mb-0">User Information</h5>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between border-bottom mb-3 pb-3 flex-wrap gap-2">
-                        <div class="d-flex align-items-center">
-                            <a href="javascript:void(0);" class="avatar avatar-lg flex-shrink-0">
-                                @if ($user->profile_picture)
-                                    <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture">
-                                @else
-                                    <span style="width: 40px; height: 40px;"
-                                        class="avatar-title rounded-2 text-center fs-16 bg-primary text-white" width="460"
-                                        height="40">
-                                        {{-- Default avatar if no profile picture --}}
-                                        <h4
-                                            style="font-size: 27px !important; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;">
-                                            {{ strtoupper(substr($user->name, 0, 1)) }}
-                                        </h4>
-                                @endif
-                            </a>
-                            <div class="ms-2">
-                                <h6 class="fs-14 fw-bold mb-1"><a href="javascript:void(0);">{{ $user->name }}</a>
-                                </h6>
-                                <div class="d-flex align-items-center item-list">
-                                    <p class="d-inline-flex align-items-center">{{ $user->email }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-end">
-                            <a href="{{ route('user.profile') }}" class="btn btn-sm btn-info">
-                                <i class="ti ti-edit"></i> Edit Account</a>
-                        </div>
-                    </div>
+      <div class="d-flex align-items-center justify-content-between mb-3 p-2 py-3 rounded-4 lightgray2" style="padding-right: 20px !important;">
+    <!-- Avatar and User Info -->
+    <div class="d-flex align-items-center">
+        <a href="javascript:void(0);" class="avatar avatar-xl flex-shrink-0">
+            @if ($user->profile_picture)
+                <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture">
+            @else
+                <span style="width: 60px; height: 60px;"
+                    class="avatar-title rounded-4 d-flex justify-content-center align-items-center text-center fs-16 bg-primary text-white" width="460" height="40">
+                    <h4 style="font-size: 27px !important;">
+                        {{ strtoupper(substr($user->name, 0, 2)) }}
+                    </h4>
+                </span>
+            @endif
+        </a>
+        <div class="ms-2">
+            <h6 class="fs-14 fw-bold mb-1">
+                <a href="javascript:void(0);">{{ $user->name }}</a>
+            </h6>
+            <div class="d-flex align-items-center item-list">
+                <p class="d-inline-flex align-items-center">{{ $user->email }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Button -->
+    <div>
+        <a href="{{ route('user.profile') }}"
+   class="bg-primary text-white d-flex justify-content-center align-items-center"
+   style="float: right; width: 35px; height: 35px; border-radius: 50%;">
+    <i class="ti ti-edit"></i>
+</a>
+
+    </div>
+</div>
+
 
 
                     <div
-                        class="d-flex align-items-center justify-content-between jumbotrun bg-transarent border rounded-2 mb-2 pb-2 flex-wrap gap-2">
+                        class="d-flex align-items-center justify-content-between rounded-2 mb-2 flex-wrap gap-2 mb-3 p-2 py-3 rounded-4 lightgray2">
                         <div class="d-flex align-items-center">
-                            <a href="javascript:void(0);" class="avatar avatar-lg mt-3">
-                                <span class="text-primary"> <i class="ti ti-coin fs-16"
+                            <a href="javascript:void(0);" class="avatar avatar-lg">
+                                <span class="bg-primary text-white d-flex justify-content-center align-items-center p-2 rounded-3"> <i class="ti ti-coin fs-16"
                                         style="font-size: 20px !important;"></i>
                                 </span>
                             </a>
-                            <div class="ms-2 mt-2">
-                                <h6 class="fs-14 fw-bold mb-1 text-primary">Bonus Balance
+                            <div class="ms-2">
+                                <h6 class="fs-14 fw-bold text-primary">Bonus Balance
                                 </h6>
                                 <div class="d-flex align-items-center item-list">
                                     <p class="fs-16 d-inline-flex align-items-center"> <b>
@@ -418,15 +425,15 @@
                     </div>
 
                     <div
-                        class="d-flex align-items-center justify-content-between jumbotrun bg-dark rounded-2 mb-2 pb-2 flex-wrap gap-2">
+                        class="d-flex align-items-center justify-content-between rounded-2 mb-2 flex-wrap gap-2 mb-3 p-2 py-3 pt-2.3 rounded-4 lightgray2">
                         <div class="d-flex align-items-center">
-                            <a href="javascript:void(0);" class="avatar avatar-lg mt-3">
-                                <span class="text-white"> <i class="ti ti-coin fs-16"
+                            <a href="javascript:void(0);" class="avatar avatar-lg">
+                                <span class="bg-success text-white d-flex justify-content-center align-items-center p-2 rounded-3"> <i class="ti ti-coin fs-16"
                                         style="font-size: 20px !important;"></i>
                                 </span>
                             </a>
                             <div class="ms-2 mt-2">
-                                <h6 class="fs-14 fw-bold mb-1 text-white">Account Balance
+                                <h6 class="fs-14 fw-bold mb-1">Account Balance
                                 </h6>
                                 <div class="d-flex align-items-center item-list">
                                     <p class="fs-16 d-inline-flex align-items-center"><b>
@@ -437,11 +444,50 @@
 
                     </div>
 
-                    <div class="d-flex justify-content-between mt-3">
-                        <a href="{{ route('user.deposit') }}" class="btn w-100 d-block btn-primary">
-                            <i class="ti ti-rocket"></i> Fund Account</a>
+                    <div class="d-flex justify-content-between mt-3 gap-3">
+    <button type="button" class="btn w-100 d-block btn-primary rounded-4" style="height: 45px;"
+        onclick="window.location.href='{{ route('user.deposit') }}'">
+        <i class="ti ti-rocket" style="font-size: 18px;"></i> Fund Account
+    </button>
 
-                    </div>
+    <button type="button" class="btn w-100 d-block btn-success rounded-4" style="height: 45px;"
+        onclick="window.location.href='{{ route('user.deposit') }}'">
+        <i class="ti ti-download mt-2" style="font-size: 18px;"></i> Withdraw
+    </button>
+</div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card shadow bg-success flex-fill rounded-4 mt-3" style="border: 0px solid">
+                <div class="mb-3 rounded-4 pt-3 text-center">
+                                        <img src="{{ asset('user/assets/img/medal/trophy.svg') }}" class="w-50 mt-4" alt="">
+                </div>
+                <div class="card-body">
+
+                <h3 class="text-center text-white">Register for our FX challenge</h3>
+                <p class="text-center text-light">We're are thrilled to announce that registeration</p>
+
+                    <div class="d-flex justify-content-between mt-3 gap-3">
+
+    <button type="button" class="btn w-100 d-block align-items-center btn-light text-success rounded-4" style="height: 45px;">
+        Learn More <i class="ti ti-chevron-right" style="font-size: 18px;"></i>
+    </button>
+</div>
+
                 </div>
 
             </div>
@@ -453,5 +499,4 @@
     </div>
     </div>
     </div>
-
 @endsection

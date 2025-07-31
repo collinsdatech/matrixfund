@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PayoutController;
+use App\Http\Controllers\TradingAccountController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -56,8 +58,10 @@ Route::middleware(['auth', 'verified', 'token_check'])->prefix('user')->group(fu
     Route::get('/activity', [UserController::class, 'activity'])->name('user.activity');
     Route::get('/demo', [UserController::class, 'demo'])->name('user.demo');
 
+    // Route to view trading accounts
+    Route::get('/trading/accounts', [TradingAccountController::class, 'accounts'])->name('user.accounts');
     // Route to buy a package
-    Route::get('/package/billing/{id}', [PackageController::class, 'package'])->name('user.package.billing');
+    Route::get('/package/billing', [PackageController::class, 'package'])->name('user.package.billing');
 
 
     // Route to enroll in a package
@@ -65,7 +69,12 @@ Route::middleware(['auth', 'verified', 'token_check'])->prefix('user')->group(fu
     Route::get('/payment/gateway', [PackageController::class, 'gateway'])->name('user.payment.gateway');
 
 
+    // route to payout page
+    Route::get('/payout', [PayoutController::class, 'payout'])->name('user.payout');
+    Route::get('/payout/history', [PayoutController::class, 'history'])->name('user.payout.history');
 
+
+    Route::get('/tournaments', [PayoutController::class, 'tournaments'])->name('user.tournament');
 
 
 
@@ -85,6 +94,9 @@ Route::middleware(['auth', 'verified', 'token_check'])->prefix('user')->group(fu
 
     // Route to change password
     Route::post('/settings/change-password', [UserController::class, 'changePassword'])->name('user.settings.change-password');
+
+
+    Route::post('/settings/personalInfo/update', [UserController::class, 'UpdatePersonalInfo'])->name('user.update.personalInfo');
 
     // Route to support center
     Route::get('/support/center', [UserController::class, 'support'])->name('user.support');
