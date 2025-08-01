@@ -20,17 +20,18 @@
     <div class="dp-row">
         <!-- Payment Methods -->
         <div class="dp-col-md-6">
-            <div class="dp-card">
+            <div class="dp-card py-5">
                 <div class="dp-card-body">
+                    <h2 class="mb-3">Payment Methods</h2>
                     <p class="dp-text-muted">
                         Due to AML laws we're required to ask for some details to verify aspects such as: Who you are, Source of funds and more. The information we gather is for the benefit of Matrix and yourself.
                     </p>
                     <div class="dp-badge-group">
                         <span class="dp-badge dp-badge-success">
-                            <i class="fas fa-coins"></i> Cryptocurrencies
+                            <i class="fas fa-coins"></i>&nbsp;&nbsp;&nbsp; Cryptocurrencies
                         </span>
                         <span class="dp-badge dp-badge-primary">
-                            <i class="fas fa-university"></i> Bank Transfer
+                            <i class="fas fa-university"></i>&nbsp;&nbsp;&nbsp; Bank Transfer
                         </span>
                     </div>
                 </div>
@@ -39,9 +40,9 @@
 
         <!-- KYC Completion -->
         <div class="dp-col-md-6">
-            <div class="dp-card dp-card-success">
+            <div class="dp-card dp-card-success py-5">
                 <div class="dp-card-body text-center">
-                    <h2 class="mb-3">Request your Payouts</h2>
+                    <h2 class="mb-3 text-white">Request your Payouts</h2>
                     <p>Minimum payout amount for withdrawal is $20.<br>Complete KYC verification to enable payout requests.</p>
                     <button class="dp-btn dp-btn-light dp-btn-sm rounded-5">
                         Complete KYC <i class="fas fa-arrow-right dp-ml-2"></i>
@@ -57,28 +58,28 @@
         <div class="dp-col-md-6 dp-col-lg-3">
             <div class="dp-card">
                 <div class="dp-card-header">
-                    <h5><i class="fas fa-wallet dp-icon-primary"></i> Wallet</h5>
+                    <h6><i class="fas fa-wallet dp-icon-primary"></i> Wallet</h6>
                 </div>
                 <div class="dp-card-body">
-                    <div class="dp-balance-item">
-                        <span class="dp-balance-label">
-                            <i class="fas fa-dollar-sign dp-text-success"></i> Cash Balance
+                    <div class="lightgray2 border-0 p-3 rounded-4 mb-2">
+                        <span>
+                            <p><i class="fas fs-20 fa-dollar-sign dp-text-success"></i></p> Cash Balance
                         </span>
-                        <span class="dp-balance-amount">$0.00</span>
+                        <p class="dp-balance-amount">$0.00</p>
                     </div>
-                    <div class="dp-balance-item">
-                        <span class="dp-balance-label">
-                            <i class="fas fa-gift dp-text-success"></i> Bonus Balance
+                    <div class="lightgray2 border-0 p-3 rounded-4 mb-2">
+                        <span>
+                            <p><i class="fas fs-20 fa-gift dp-text-success"></i></p> Bonus Balance
                         </span>
-                        <span class="dp-balance-amount">$0.00</span>
+                        <p class="dp-balance-amount">$0.00</p>
                     </div>
-                    <div class="dp-balance-item">
-                        <span class="dp-balance-label">
-                            <i class="fas fa-hourglass-half dp-text-muted"></i> Pending Transactions
+                    <div class="lightgray2 border-0 p-3 rounded-4">
+                        <span>
+                            <p><i class="fas fs-20 fa-hourglass-half dp-text-muted"></i></p> Pending Transactions
                         </span>
-                        <span class="dp-balance-amount">$0.00</span>
+                        <p class="dp-balance-amount">$0.00</p>
                     </div>
-                    <button class="dp-btn dp-btn-success dp-mt-3 dp-w-100">
+                    <button class="dp-btn dp-btn-success dp-mt-3 dp-w-100" data-bs-toggle="modal" data-bs-target="#withdrawModal">
                         Withdraw
                     </button>
                 </div>
@@ -90,22 +91,22 @@
         <div class="dp-col-md-6 dp-col-lg-3">
             <div class="dp-card">
                 <div class="dp-card-header">
-                    <h5 class="dp-text-muted"><i class="fas fa-chart-line"></i> Funded Account</h5>
+                    <h6 class="dp-text-muted"><i class="fas fa-chart-line"></i>&nbsp;&nbsp; Funded Account</h6>
                 </div>
                 <div class="dp-card-body">
-                    <div class="dp-balance-item">
-                        <span class="dp-balance-label">
-                            <i class="fas fa-coins dp-text-primary"></i> Trading Profit
+                    <div class="lightgray2 border-0 p-3 rounded-4 mb-2">
+                        <span>
+                            <p><i class="fas fs-20 fa-coins dp-text-primary"></i></p> Trading Profit
                         </span>
-                        <span class="dp-balance-amount">$0.00</span>
+                        <p class="dp-balance-amount">$0.00</p>
                     </div>
-                    <div class="dp-balance-item">
-                        <span class="dp-balance-label">
-                            <i class="fas fa-percentage dp-text-info"></i> Basic Profit Share
+                    <div class="lightgray2 border-0 p-3 rounded-3">
+                        <span>
+                            <p><i class="fas fs-20 fa-percentage dp-text-info"></i></p> Basic Profit Share
                         </span>
-                        <span class="dp-balance-amount">$0.00 (0%)</span>
+                        <p class="dp-balance-amount">$0.00 (0%)</p>
                     </div>
-                    <button class="dp-btn dp-btn-outline dp-btn-success dp-mt-3 dp-w-100">
+                    <button class="dp-btn dp-btn-outline dp-btn-success dp-mt-3 dp-w-100" data-bs-toggle="modal" data-bs-target="#transferModal{{$i}}">
                         Transfer To Wallet
                     </button>
                 </div>
@@ -121,6 +122,281 @@
         </div>
     </div>
 </div>
+
+<!-- Withdraw Modal with Styled Tabs -->
+<div class="modal fade modal-lg" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" id="withdrawModalLabel">Wallet Transactions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0">
+                <!-- Tab Navigation - Custom Styled -->
+                <ul class="nav nav-pills mb-4 wallet-tabs" id="walletTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active d-flex align-items-center" id="deposit-tab" data-bs-toggle="pill" data-bs-target="#deposit" type="button" role="tab">
+                            <i class="fas fa-arrow-down me-2"></i>
+                            <span>Deposit</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center" id="withdraw-tab" data-bs-toggle="pill" data-bs-target="#withdraw" type="button" role="tab">
+                            <i class="fas fa-arrow-up me-2"></i>
+                            <span>Withdraw</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center" id="redeem-tab" data-bs-toggle="pill" data-bs-target="#redeem" type="button" role="tab">
+                            <i class="fas fa-gift me-2"></i>
+                            <span>Redeem</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="walletTabsContent">
+                    <!-- Deposit Tab -->
+                    <div class="tab-pane fade show active" id="deposit" role="tabpanel">
+                        <div class="dp-card p-4 mb-3">
+                            <h6 class="fw-bold mb-3"><i class="fas fa-money-bill-wave text-primary me-2"></i> Deposit Funds</h6>
+
+                            <div class="-mt-2 lightgray p-3 rounded-4">
+                                Select Crypto
+                        <!-- Group Container -->
+                            <div class="d-flex">
+                                <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio1" autocomplete="off" checked>
+                            <label class="w-100" style="font-weight: 700" for="radio1">
+                                <span class="checkbox-fake"></span>
+                                Bitcoin (BTC)
+                            </label>
+                            </div>
+                                &nbsp;&nbsp;&nbsp;
+                            <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio2" autocomplete="off">
+                            <label class="w-100" for="radio2" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                Ethurem (ETH)
+                            </label>
+                            </div>
+                            </div>
+                            <div class="d-flex mt-2">
+                                <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio3" autocomplete="off">
+                            <label class="w-100" for="radio3" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                Litcoin (LTC)
+                            </label>
+                            </div>
+                                &nbsp;&nbsp;&nbsp;
+                            <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio4" autocomplete="off">
+                            <label class="w-100" for="radio4" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                Solana (SOL)
+                            </label>
+                            </div>
+                                &nbsp;&nbsp;&nbsp;
+                            <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio5" autocomplete="off">
+                            <label class="w-100" for="radio5" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                USDT
+                            </label>
+                            </div>
+                            </div>
+
+                            
+                    </div>
+
+
+                            <form>
+                                <div class="mb-3 mt-3">
+                                    <label for="withdrawAmount" class="form-label small text-muted">Amount (USD)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control form-control-lg rounded-5" id="withdrawAmount" placeholder="0.00">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="alert alert-light border mb-4 rounded-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-exclamation-circle text-warning me-2"></i>
+                                <div>
+                                    <small class="d-block text-muted">Withdrawal Notice</small>
+                                    <small>Minimum withdrawal amount is $20. Processing may take 1-3 business days.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-3">
+                            <i class="fas fa-arrow-down me-2"></i> Fund Account
+                        </button>
+                    </div>
+
+                    <!-- Withdraw Tab -->
+                    <div class="tab-pane fade" id="withdraw" role="tabpanel">
+                        <div class="dp-card p-4 mb-3">
+                            <h6 class="fw-bold mb-3"><i class="fas fa-money-bill-wave text-primary me-2"></i> Withdraw Funds</h6>
+
+                            <div class="-mt-2 lightgray p-3 rounded-4">
+                                Select Crypto
+                        <!-- Group Container -->
+                            <div class="d-flex">
+                                <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio1" autocomplete="off" checked>
+                            <label class="w-100" style="font-weight: 700" for="radio1">
+                                <span class="checkbox-fake"></span>
+                                Bitcoin (BTC)
+                            </label>
+                            </div>
+                                &nbsp;&nbsp;&nbsp;
+                            <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio2" autocomplete="off">
+                            <label class="w-100" for="radio2" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                Ethurem (ETH)
+                            </label>
+                            </div>
+                            </div>
+                            <div class="d-flex mt-2">
+                                <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio3" autocomplete="off">
+                            <label class="w-100" for="radio3" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                Litcoin (LTC)
+                            </label>
+                            </div>
+                                &nbsp;&nbsp;&nbsp;
+                            <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio4" autocomplete="off">
+                            <label class="w-100" for="radio4" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                Solana (SOL)
+                            </label>
+                            </div>
+                                &nbsp;&nbsp;&nbsp;
+                            <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault" id="radio5" autocomplete="off">
+                            <label class="w-100" for="radio5" style="font-weight: 700">
+                                <span class="checkbox-fake"></span>
+                                USDT
+                            </label>
+                            </div>
+                            </div>
+
+                            
+                    </div>
+
+
+
+                            <div class="mt-3 p-3 rounded-4 lightgray">
+                                Select Crypto
+                        <!-- Group Container -->
+                            <div class="d-flex">
+                                <div class="radio-select">
+                            <input type="radio" class="btn-check" name="flexRadioDefault3" id="banktrans2" autocomplete="off" checked>
+                            <label class="w-100" style="font-weight: 700" for="banktrans2">
+                                <span class="checkbox-fake"></span>
+                                Bank Transfer
+                            </label>
+                            </div>
+                            </div>
+
+                            
+                    </div>
+
+
+                            <form>
+                                <div class="mb-3 mt-3">
+                                    <label for="withdrawAmount" class="form-label small text-muted">Amount (USD)</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control form-control-lg rounded-5" id="withdrawAmount" placeholder="0.00">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="alert alert-light border mb-4 rounded-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-exclamation-circle text-warning me-2"></i>
+                                <div>
+                                    <small class="d-block text-muted">Withdrawal Notice</small>
+                                    <small>Minimum withdrawal amount is $20. Processing may take 1-3 business days.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-3">
+                            <i class="fas fa-arrow-up me-2"></i> Confirm Withdrawal
+                        </button>
+                    </div>
+
+                    <!-- Redeem Tab -->
+                    <div class="tab-pane fade" id="redeem" role="tabpanel">
+                        <div class="dp-card p-4 mb-3 rounded-4">
+                            <h6 class="fw-bold mb-3"><i class="fas fa-gift text-primary me-2"></i> Redeem Bonus</h6>
+                            <form>
+                                
+                                <div class="mb-3">
+                                    <label for="redeemCode" class="form-label small text-muted">Promo Code</label>
+                                    <input type="text" class="form-control form-control-lg rounded-5" id="redeemCode" placeholder="Enter promo code (if any)">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="alert alert-light border mb-4 rounded-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-info-circle text-primary me-2"></i>
+                                <div>
+                                    <small class="d-block text-muted">Bonus Information</small>
+                                    <small>Redeem your bonus balance to your wallet. Bonus may have specific terms.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-3">
+                            <i class="fas fa-gift me-2"></i> Redeem Bonus
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Transfer Modals (one for each funded account) -->
+@for ($i = 0; $i < 3; $i++)
+<div class="modal fade" id="transferModal{{$i}}" tabindex="-1" aria-labelledby="transferModalLabel{{$i}}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="transferModalLabel{{$i}}">Transfer From Funded Account #{{$i+1}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="transferAmount{{$i}}" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="transferAmount{{$i}}" placeholder="Enter amount to transfer">
+                    </div>
+                    <div class="mb-3">
+                        <label for="transferSource{{$i}}" class="form-label">Transfer From</label>
+                        <select class="form-select" id="transferSource{{$i}}">
+                            <option value="profit">Trading Profit ($0.00)</option>
+                            <option value="share">Basic Profit Share ($0.00)</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="alert alert-warning mt-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i> Transfers to your wallet may affect your account balance and trading limits.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success">Confirm Transfer</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endfor
 
 <!-- Styles (include inline or in your CSS file) -->
 <style>
@@ -275,7 +551,9 @@
     }
 
     .dp-balance-amount {
-        font-weight: 600;
+        font-weight: 900;
+        color: #000000;
+        font-size: 20px;
     }
 
     .dp-btn {
@@ -352,5 +630,144 @@
             margin-top: 15px;
         }
     }
+
+        /* Custom Tab Styling */
+    .wallet-tabs {
+        background:rgba(108, 117, 125, 0.05);
+        border-radius: 12px;
+        padding: 5px;
+        margin-top: 20px;
+        border-radius: 30px;
+        border: 1px solid rgba(108, 117, 125, 0.08);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .wallet-tabs .nav-item {
+        border-radius: 30px !important;
+    }
+    
+    
+    .wallet-tabs .nav-link {
+        border: none;
+        color: #6c757d;
+        font-weight: 500;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        border-radius: 30px !important;
+    }
+    
+    .wallet-tabs .nav-link:hover {
+        color:green;
+        background: rgba(67, 97, 238, 0.1);
+    }
+    
+    .wallet-tabs .nav-link.active {
+        background:green;
+        color: white;
+        box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+    }
+    
+    .wallet-tabs .nav-link i {
+        font-size: 0.9rem;
+    }
+    
+    /* Form Styling */
+    .form-control-lg, .form-select-lg {
+        padding: 12px 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e6ed;
+    }
+    
+    .input-group-text {
+        background-color: #f8f9fa;
+        border: 1px solid #e0e6ed;
+        border-radius: 50px !important;
+        width: 50px;
+        display: flex;
+        justify-content: center
+    } 
+    
+    /* Card Styling */
+    .dp-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        border: none;
+    }
+    
+    /* Alert Styling */
+    .alert-light {
+        background-color: #f8f9fa;
+        border-color: #e0e6ed;
+    }
+    
+    /* Button Styling */
+    .btn-primary {
+        background-color:green;
+        border: none;
+    }
+    
+    .btn-primary:hover {
+        background-color: #3a56d4;
+    }
+    
+    .rounded-3 {
+        border-radius: 12px !important;
+    }
+
+      .radio-select .btn-check:checked + label {
+    background-color:rgba(87, 124, 107, 0.15);
+    color: green;
+    border-color: green;
+  }
+
+  .radio-select label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid green;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    color: green;
+    font-size: 12px;
+  }
+
+  .checkbox-fake {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid green;
+    border-radius: 0.25rem;
+    background-color: rgba(87, 124, 107, 0.15);
+    display: inline-block;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .btn-check:checked + label .checkbox-fake {
+    background-color: green;
+    border-color: green;
+    color: white
+  }
+
+  .btn-check:checked + label .checkbox-fake::after {
+    content: "";
+    position: absolute;
+    top: 0.1rem;
+    left: 0.35rem;
+    width: 0.4rem;
+    height: 0.75rem;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
 </style>
 @endsection
+
