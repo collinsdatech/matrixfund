@@ -9,22 +9,18 @@
             <p class="dp-text-muted">Manage your withdrawals and account transfers</p>
         </div>
         <div class="dp-user-profile">
-            <span class="dp-username">{{$user->username}}</span>
+            <span class="dp-username">{{ $user->username }}</span>
             <div class="dp-avatar">
-                 {{ ucwords($user->name[0]) ?? '' }}
-                            {{ ucwords($user->name[1] ?? '') }}            
+                {{ strtoupper(substr($user->name, 0, 1)) }}
             </div>
         </div>
     </div>
 
-    <!-- Top Notice Cards -->
+    <!-- Payment Methods & KYC Section -->
     <div class="dp-row">
-        <!-- Payment Methods Card -->
-        <div class="dp-col-md-8">
+        <!-- Payment Methods -->
+        <div class="dp-col-md-6">
             <div class="dp-card">
-                <div class="dp-card-header">
-                    <h5><i class="fas fa-credit-card dp-icon-primary"></i> Payment Methods</h5>
-                </div>
                 <div class="dp-card-body">
                     <p class="dp-text-muted">
                         Due to AML laws we're required to ask for some details to verify aspects such as: Who you are, Source of funds and more. The information we gather is for the benefit of Matrix and yourself.
@@ -41,13 +37,13 @@
             </div>
         </div>
 
-        <!-- KYC Notice Card -->
-        <div class="dp-col-md-4">
+        <!-- KYC Completion -->
+        <div class="dp-col-md-6">
             <div class="dp-card dp-card-success">
-                <div class="dp-card-body">
-                    <h5><i class="fas fa-id-card"></i> Request your Payouts</h5>
+                <div class="dp-card-body text-center">
+                    <h2 class="mb-3">Request your Payouts</h2>
                     <p>Minimum payout amount for withdrawal is $20.<br>Complete KYC verification to enable payout requests.</p>
-                    <button class="dp-btn dp-btn-light dp-btn-sm">
+                    <button class="dp-btn dp-btn-light dp-btn-sm rounded-5">
                         Complete KYC <i class="fas fa-arrow-right dp-ml-2"></i>
                     </button>
                 </div>
@@ -55,9 +51,9 @@
         </div>
     </div>
 
-    <!-- Wallet and Accounts Grid -->
+    <!-- Balances & Funded Accounts -->
     <div class="dp-row">
-        <!-- Wallet Balance Card -->
+        <!-- Wallet Section -->
         <div class="dp-col-md-6 dp-col-lg-3">
             <div class="dp-card">
                 <div class="dp-card-header">
@@ -72,7 +68,7 @@
                     </div>
                     <div class="dp-balance-item">
                         <span class="dp-balance-label">
-                            <i class="fas fa-gift dp-text-warning"></i> Bonus Balance
+                            <i class="fas fa-gift dp-text-success"></i> Bonus Balance
                         </span>
                         <span class="dp-balance-amount">$0.00</span>
                     </div>
@@ -83,14 +79,14 @@
                         <span class="dp-balance-amount">$0.00</span>
                     </div>
                     <button class="dp-btn dp-btn-success dp-mt-3 dp-w-100">
-                        <i class="fas fa-money-bill-wave dp-mr-2"></i> Withdraw
+                        Withdraw
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Funded Account Cards -->
-        @for($i = 0; $i < 3; $i++)
+        <!-- Funded Accounts (x3) -->
+        @for ($i = 0; $i < 3; $i++)
         <div class="dp-col-md-6 dp-col-lg-3">
             <div class="dp-card">
                 <div class="dp-card-header">
@@ -110,17 +106,24 @@
                         <span class="dp-balance-amount">$0.00 (0%)</span>
                     </div>
                     <button class="dp-btn dp-btn-outline dp-btn-success dp-mt-3 dp-w-100">
-                        <i class="fas fa-exchange-alt dp-mr-2"></i> Transfer To Wallet
+                        Transfer To Wallet
                     </button>
                 </div>
             </div>
         </div>
         @endfor
     </div>
+
+    <!-- Transactions Table -->
+    <div class="dp-card">
+        <div class="dp-card-body dp-text-muted">
+            No transaction yet
+        </div>
+    </div>
 </div>
 
+<!-- Styles (include inline or in your CSS file) -->
 <style>
-    /* DreamPOS Theme Variables */
     :root {
         --dp-primary: #4361ee;
         --dp-success: #16a34a;
@@ -134,13 +137,11 @@
         --dp-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
 
-    /* Base Container */
     .dp-container {
         padding: 20px;
         background-color: #f5f7fb;
     }
 
-    /* Page Header */
     .dp-page-header {
         display: flex;
         justify-content: space-between;
@@ -154,10 +155,6 @@
         font-weight: 700;
         color: var(--dp-dark);
         margin-bottom: 5px;
-    }
-
-    .dp-text-muted {
-        color: #6c757d;
     }
 
     .dp-user-profile {
@@ -182,7 +179,6 @@
         font-weight: 600;
     }
 
-    /* Grid System */
     .dp-row {
         display: flex;
         flex-wrap: wrap;
@@ -199,7 +195,6 @@
     .dp-col-md-8 { width: 66.66%; }
     .dp-col-lg-3 { width: 25%; }
 
-    /* Card Styles */
     .dp-card {
         background: white;
         border-radius: var(--dp-radius);
@@ -210,19 +205,12 @@
     }
 
     .dp-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
     }
 
     .dp-card-header {
         padding: 15px 20px;
         border-bottom: 1px solid var(--dp-border);
-    }
-
-    .dp-card-header h5 {
-        font-weight: 600;
-        margin: 0;
-        display: flex;
-        align-items: center;
     }
 
     .dp-card-body {
@@ -234,13 +222,11 @@
         color: white;
     }
 
-    /* Icons */
     .dp-icon-primary {
         color: var(--dp-primary);
         margin-right: 10px;
     }
 
-    /* Badges */
     .dp-badge-group {
         display: flex;
         gap: 10px;
@@ -266,7 +252,6 @@
         color: var(--dp-success);
     }
 
-    /* Balance Items */
     .dp-balance-item {
         display: flex;
         justify-content: space-between;
@@ -293,7 +278,6 @@
         font-weight: 600;
     }
 
-    /* Buttons */
     .dp-btn {
         border: none;
         border-radius: var(--dp-radius);
@@ -325,10 +309,6 @@
         color: var(--dp-success);
     }
 
-    .dp-btn-light:hover {
-        background-color: #f8f9fa;
-    }
-
     .dp-btn-outline {
         background-color: transparent;
         border: 1px solid var(--dp-success);
@@ -343,19 +323,15 @@
         width: 100%;
     }
 
-    /* Spacing Utilities */
     .dp-mt-3 { margin-top: 15px; }
     .dp-mr-2 { margin-right: 10px; }
     .dp-ml-2 { margin-left: 10px; }
 
-    /* Text Colors */
+    .dp-text-muted { color: #6c757d; }
     .dp-text-primary { color: var(--dp-primary); }
     .dp-text-success { color: var(--dp-success); }
-    .dp-text-warning { color: var(--dp-warning); }
     .dp-text-info { color: var(--dp-info); }
-    .dp-text-muted { color: #6c757d; }
 
-    /* Responsive Adjustments */
     @media (max-width: 992px) {
         .dp-col-md-4, .dp-col-md-6, .dp-col-md-8, .dp-col-lg-3 {
             width: 50%;
