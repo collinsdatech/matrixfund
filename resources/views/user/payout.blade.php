@@ -40,7 +40,7 @@
 
         <!-- KYC Completion -->
         <div class="dp-col-md-6">
-            <div class="dp-card dp-card-success py-5">
+            <div class="dp-card bg-success py-5">
                 <div class="dp-card-body text-center">
                     <h2 class="mb-3 text-white">Request your Payouts</h2>
                     <p>Minimum payout amount for withdrawal is $20.<br>Complete KYC verification to enable payout requests.</p>
