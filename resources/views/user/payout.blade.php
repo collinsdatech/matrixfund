@@ -350,7 +350,7 @@
                                     <small>Redeem your bonus balance to your wallet. Bonus may have specific terms.</small>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <button type="button" class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-3">
                             <i class="fas fa-gift me-2"></i> Redeem Bonus
                         </button>
